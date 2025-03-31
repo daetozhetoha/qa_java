@@ -23,17 +23,7 @@ public class LionTest {
 
     @Before
     public void setUp() throws Exception {
-        lion = new Lion("Самец") {
-            @Override
-            public int getKittens() {
-                return feline.getKittens();
-            }
-
-            @Override
-            public List<String> getFood() throws Exception {
-                return feline.getFood("Хищник");
-            }
-        };
+        lion = new Lion("Самец", feline);
     }
 
     @Test
@@ -71,7 +61,7 @@ public class LionTest {
     @Test
     public void lionConstructorInvalidSexThrowsExceptionTest() {
         try {
-            new Lion("Неизвестный");
+            new Lion("Неизвестный", feline);
         }catch (Exception e) {
             assertEquals("Сообщение об исключении отличается","Используйте допустимые значения пола животного - самец или самка", e.getMessage());
         }

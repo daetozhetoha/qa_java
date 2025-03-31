@@ -68,8 +68,12 @@ public class LionTest {
         lion.getFood();
     }
 
-    @Test(expected = Exception.class)
-    public void lionConstructorInvalidSexThrowsExceptionTest() throws Exception {
-        new Lion("Неизвестный");
+    @Test
+    public void lionConstructorInvalidSexThrowsExceptionTest() {
+        try {
+            new Lion("Неизвестный");
+        }catch (Exception e) {
+            assertEquals("Сообщение об исключении отличается","Используйте допустимые значения пола животного - самец или самка", e.getMessage());
+        }
     }
 }
